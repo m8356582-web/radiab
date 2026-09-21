@@ -1,0 +1,3 @@
+// config.js
+export const SUPABASE_URL = "https://puogylnienjodlrfbvhq.supabase.co";
+export const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB1b2d5bG5pZW5qb2RscmZidmhxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMDIyNDEsImV4cCI6MjEwNTU3ODI0MX0.u7cCNRPQhkn4LCTPP-IuxK0jSuHcK3E0-pysviS5SnY";

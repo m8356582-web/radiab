@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ردیاب آنلاین</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>📍 ردیاب آنلاین</h1>
+      <div class="status" id="status">در حال اتصال...</div>
+    </header>
+
+    <div class="controls">
+      <input id="userName" type="text" placeholder="نام شما" />
+      <button id="startBtn">شروع ردیابی</button>
+      <button id="stopBtn" disabled>توقف</button>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="sidebar">
+      <h3>کاربران آنلاین</h3>
+      <ul id="userList"></ul>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
