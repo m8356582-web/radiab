@@ -1,70 +1,455 @@
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, sans-serif; }
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
 
-body { background: #0f172a; color: #e2e8f0; height: 100vh; overflow: hidden; }
+:root {
+    --bg: #0b1220;
+    --panel: #121d2e;
+    --panel-light: #172438;
+    --border: #27364d;
+    --text: #e8eef8;
+    --muted: #9aabc2;
+    --blue: #5688f5;
+    --red: #ef626c;
+    --green: #38c995;
+}
 
-#app { display: grid; grid-template-columns: 1fr 280px; grid-template-rows: auto auto 1fr; height: 100vh; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+}
+
+button, input {
+    font: inherit;
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* نوار بالای برنامه */
 
 header {
-  grid-column: 1 / -1;
-  background: #1e293b;
-  padding: 12px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #334155;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 14px 22px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
 }
 
-h1 { font-size: 18px; }
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-.status { font-size: 13px; padding: 4px 12px; border-radius: 20px; background: #ef4444; }
-.status.online { background: #22c55e; }
+.logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    background: #22375b;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.brand p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+/* وضعیت اتصال */
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 13px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #8995a8;
+}
+
+.status.online {
+    color: #a3f1d3;
+    border-color: #24664f;
+}
+
+    .status.online .dot {
+        background: var(--green);
+        box-shadow: 0 0 0 4px #38c99522;
+    }
+
+/* بخش کنترل‌ها */
 
 .controls {
-  grid-column: 1 / -1;
-  display: flex;
-  gap: 10px;
-  padding: 12px 20px;
-  background: #1e293b;
-  border-bottom: 1px solid #334155;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 13px 22px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
 }
 
-input, button {
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: #e2e8f0;
-  font-size: 14px;
+.name-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 190px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+input {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+    color: var(--text);
+    background: #0c1626;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+}
+
+    input:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px #5688f522;
+    }
+
+.buttons {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
 }
 
 button {
-  background: #3b82f6;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
+    min-height: 42px;
+    padding: 9px 15px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
 }
 
-button:hover:not(:disabled) { background: #2563eb; }
-button:disabled { opacity: 0.4; cursor: not-allowed; }
-button#stopBtn { background: #ef4444; }
+    button:active:not(:disabled) {
+        transform: scale(0.98);
+    }
 
-#map { width: 100%; height: 100%; }
+    button:disabled {
+        opacity: 0.42;
+        cursor: not-allowed;
+    }
+
+.start {
+    background: var(--blue);
+    color: white;
+}
+
+    .start:hover:not(:disabled) {
+        background: #3f70dd;
+    }
+
+.stop {
+    color: #ffb9be;
+    background: #49252e;
+    border-color: #69323c;
+}
+
+    .stop:hover:not(:disabled) {
+        background: #60303a;
+    }
+
+.center {
+    color: var(--text);
+    background: #1c2b40;
+    border-color: var(--border);
+}
+
+    .center:hover:not(:disabled) {
+        background: #263951;
+    }
+
+/* پیام‌های برنامه */
+
+.notice {
+    padding: 9px 22px;
+    background: #111e30;
+    color: #c7d5e8;
+    font-size: 12px;
+    line-height: 1.8;
+    border-bottom: 1px solid var(--border);
+}
+
+    .notice.error {
+        color: #ffc0c4;
+        background: #351d27;
+    }
+
+    .notice.success {
+        color: #a5f0d4;
+    }
+
+/* نقشه و فهرست کاربران */
+
+.workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    flex: 1;
+    min-height: 0;
+}
+
+.map-container {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background: #dce4ed;
+}
+
+.map-caption {
+    position: absolute;
+    z-index: 500;
+    bottom: 10px;
+    right: 10px;
+    padding: 6px 10px;
+    color: #d1dbea;
+    background: #0b1220dd;
+    border-radius: 7px;
+    font-size: 10px;
+    pointer-events: none;
+}
+
+/* پنل کاربران */
 
 .sidebar {
-  background: #1e293b;
-  padding: 16px;
-  overflow-y: auto;
-  border-right: 1px solid #334155;
+    padding: 17px 14px;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
 }
 
-.sidebar h3 { margin-bottom: 12px; font-size: 15px; color: #94a3b8; }
+.sidebar-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
 
-#userList { list-style: none; }
-#userList li {
-  padding: 10px;
-  background: #0f172a;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  font-size: 13px;
-  border-right: 3px solid #3b82f6;
+    .sidebar-heading h2 {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+.count {
+    padding: 4px 10px;
+    color: #b9ceff;
+    background: #203554;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#userList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+}
+
+    #userList li.user-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        min-width: 0;
+        background: #0d1727;
+        border: 1px solid #1d2b40;
+        border-radius: 10px;
+    }
+
+.avatar {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    border-radius: 10px;
+    background: #233a60;
+    color: #b7ccff;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+    .avatar.me {
+        background: #5a2835;
+        color: #ffc0c6;
+    }
+
+.user-meta {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-name {
+    overflow: hidden;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-time {
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.you-tag {
+    padding: 3px 6px;
+    color: #ffc0c6;
+    background: #4a2934;
+    border-radius: 5px;
+    font-size: 9px;
+}
+
+.empty {
+    padding: 12px 5px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+}
+
+/* کنترل‌های نقشه */
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    color: var(--text);
+    background: var(--panel);
+}
+
+.leaflet-control-attribution {
+    font-size: 9px !important;
+}
+
+/* نمایشگرهای کوچک */
+
+@media (max-width: 760px) {
+    body {
+        overflow: auto;
+    }
+
+    #app {
+        min-height: 560px;
+    }
+
+    header {
+        padding: 11px 14px;
+    }
+
+    .controls {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 11px 14px;
+    }
+
+    .name-field {
+        min-width: 0;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .start {
+        grid-column: 1 / -1;
+    }
+
+    button {
+        padding: 8px 9px;
+    }
+
+    .notice {
+        padding: 8px 14px;
+    }
+
+    .workspace {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(250px, 1fr) 180px;
+    }
+
+    .sidebar {
+        padding: 10px 14px;
+        border-top: 1px solid var(--border);
+        border-right: 0;
+    }
+
+    .sidebar-heading {
+        margin-bottom: 8px;
+    }
+
+    #userList {
+        display: grid;
+        grid-template-columns: repeat( auto-fill, minmax(145px, 1fr) );
+    }
+}
+
+@media (max-width: 380px) {
+    .brand p {
+        display: none;
+    }
+
+    .status {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+
+    .buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .start {
+        grid-column: auto;
+    }
 }
