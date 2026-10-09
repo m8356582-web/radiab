@@ -1,79 +1,25 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0f172a">
-    <title>ردیاب آنلاین</title>
-    <link rel="stylesheet"
-          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>ماموریت — ردیاب تیمی</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main id="app">
-        <header>
-            <div class="brand">
-                <div class="logo">📍</div>
-                <div>
-                    <h1>ردیاب آنلاین</h1>
-                    <p>اشتراک‌گذاری موقعیت با رضایت کاربران</p>
-                </div>
-            </div>
-            <div class="status" id="status">
-                <span class="dot"></span>
-                <span id="statusText">در حال اتصال...</span>
-            </div>
-        </header>
-
-        <section class="controls">
-            <label class="name-field">
-                <span>نام شما</span>
-                <input id="userName" type="text"
-                       maxlength="32" placeholder="نام نمایشی">
-            </label>
-
-            <div class="buttons">
-                <button id="startBtn" class="start">
-                    شروع ردیابی
-                </button>
-                <button id="stopBtn" class="stop" disabled>
-                    توقف ردیابی
-                </button>
-                <button id="centerBtn" class="center" disabled>
-                    موقعیت من
-                </button>
-            </div>
-        </section>
-
-        <div id="notice" class="notice" role="status">
-            برای شروع، نام خود را وارد کنید و دکمه شروع ردیابی را بزنید.
-        </div>
-
-        <section class="workspace">
-            <div class="map-container">
-                <div id="map"></div>
-                <div class="map-caption">
-                    نقشه © OpenStreetMap
-                </div>
-            </div>
-
-            <aside class="sidebar">
-                <div class="sidebar-heading">
-                    <h2>کاربران آنلاین</h2>
-                    <span id="userCount" class="count">۰</span>
-                </div>
-                <ul id="userList">
-                    <li class="empty">
-                        هنوز کاربری آنلاین نیست.
-                    </li>
-                </ul>
-            </aside>
-        </section>
-    </main>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-    </script>
-    <script type="module" src="app.js"></script>
+  <div id="app">
+    <header class="topbar">
+      <a class="brand" href="#/" aria-label="صفحه اصلی"><span class="brand-mark">م</span><span>ماموریت <small>ردیاب تیمی</small></span></a>
+      <nav id="topnav" aria-label="ناوبری اصلی"></nav>
+    </header>
+    <main id="view" class="view" tabindex="-1"><div class="loading page">در حال بارگذاری…</div></main>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
